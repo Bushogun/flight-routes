@@ -1,4 +1,4 @@
-# Routes Fligth-Routes
+# Routes Fligth Routes
 
 Before starting you must check if you have a node version equal to or greater than 20.10.0 (do it with the "npm -v" command) and an npm version equal to or greater than 9.8.1 (do it with the "npm -v" command)
 
@@ -6,7 +6,7 @@ Before starting you must check if you have a node version equal to or greater th
 2. Right click -> Extract here
 3. Open folder in Visual Studio Code
 4. New terminal
-5. Run the command "NPM install"
+5. Run the command "npm install"
 6. Run the command "ng serve"
 
 <p align="right">
