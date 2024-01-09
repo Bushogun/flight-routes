@@ -1,10 +1,10 @@
 import { Transport } from "./Transport";
 
-export class Flight{
+export class Flight {
 
-  constructor( public transport: Transport,
-               public origin: string,
-               public destination: string,
-               public price: number ){
+  constructor(public transport: Transport,
+    public origin: string,
+    public destination: string,
+    public price: number) {
   }
 }

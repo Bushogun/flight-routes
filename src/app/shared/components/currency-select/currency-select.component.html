@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-label>Seleccione moneda</mat-label>
+  <mat-select [(value)]="selectedCurrency" (selectionChange)="selectCurrency($event.value)">
+    <mat-option [value]="i" *ngFor="let i of valueCurrency">{{ i.code }}</mat-option>
+  </mat-select>
+</mat-form-field>
+

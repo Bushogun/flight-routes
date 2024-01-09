@@ -1,10 +1,10 @@
 import { Flight } from './Flight';
 
-export class Journey{
+export class Journey {
 
-  constructor( public flights: Flight[],
-               public origin: string,
-               public destination: string,
-               public price: number ){
+  constructor(public flights: Flight[],
+    public origin: string,
+    public destination: string,
+    public price: number) {
   }
 }

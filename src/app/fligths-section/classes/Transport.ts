@@ -1,6 +1,6 @@
-export class Transport{
+export class Transport {
 
-  constructor( public flightCarrier: string,
-               public flightNumber: string ){
+  constructor(public flightCarrier: string,
+    public flightNumber: string) {
   }
 }

@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Vuelo desde {{ journey?.origin }} hasta {{ journey?.destination }}</mat-card-title>
+    <mat-card-subtitle>NewShore</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions style="display: flex; gap: 6px;">
+    <button mat-flat-button color="primary">Cómpralo por {{ getPrice(journey?.price || 1, currencySelected?.value) }} {{ currencySelected?.code }}</button>
+    <button mat-flat-button color="primary" (click)="toggleDetalles()">Ver detalles</button>
+  </mat-card-actions>
+</mat-card>
+
+  <mat-grid-list cols="2" rowHeight="1:1.2" *ngIf="showDetails">
+    <mat-divider class="mb-2 mt-5"></mat-divider>
+    <mat-grid-tile *ngFor="let flight of journey?.flights">
+      <app-card [flight]="flight"></app-card></mat-grid-tile>
+  </mat-grid-list>

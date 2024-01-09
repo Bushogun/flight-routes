@@ -1,0 +1,18 @@
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Detalles</mat-card-title>
+    </mat-card-header>
+    <p style="margin: auto;"><mat-icon class="mt-4 mb-6" alt="Vuelo" title="Vuelo" style="transform: scale(4);">flight</mat-icon></p>
+    <mat-card-content>
+      <p>
+      <strong>Ruta:</strong> {{ flight?.origin }} - {{ flight?.destination }}
+      <br>
+      <strong>Aerolínea:</strong> {{ flight?.transport?.flightCarrier }}
+      <br>
+      <strong>Vuelo número:</strong> {{ flight?.transport?.flightNumber }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button class="flat-button" color="primary">Cómpralo por {{ getPrice(flight?.price || 1, currencySelected?.value) }} {{ currencySelected?.code }}</button>
+    </mat-card-actions>
+  </mat-card>
