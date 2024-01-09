@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlightModule } from './fligths-section/flights-section.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { FlightModule } from './fligths-section/flights-section.module';
     FlightModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

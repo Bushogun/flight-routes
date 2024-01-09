@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "flight-routes:build:production"
+              "buildTarget": "flight-routes:build:production"
             },
             "development": {
-              "browserTarget": "flight-routes:build:development"
+              "buildTarget": "flight-routes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "flight-routes:build"
+            "buildTarget": "flight-routes:build"
           }
         },
         "test": {
