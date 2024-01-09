@@ -1,7 +1,7 @@
 import { JourneyService } from './journey.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { firstValueFrom, map } from 'rxjs';
 import { FlightResponseInterface } from '../interfaces/fligthResponse.interface';
 import { flightMapper } from '../mappers/flight.mapper';
