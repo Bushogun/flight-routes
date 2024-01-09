@@ -51,7 +51,7 @@ export class AppPageComponent implements OnInit, OnDestroy {
 
   this.flightsData = await this.flightService.getJourney(this.origenCtrl.value , this.destinoCtrl.value);
     Swal.close();
-    //console.log("Journey", fligthsData)
+    console.log("Journey" + this.flightsData)
 
     if (!this.flightsData) {
       Swal.fire('No se han encontrado rutas para este viaje', this.tituloAlert, 'error');
@@ -67,18 +67,6 @@ export class AppPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrency();
-    // this.subscription.add(
-    // this.origenCtrl.valueChanges
-    //   .pipe(debounceTime(350))
-    //   .subscribe(value => {
-    //     console.log(value);
-    //   })
-    // );
-    // this.subscription.add(
-    // this.destinoCtrl.valueChanges.subscribe(value => {
-    //   console.log(value);
-    // })
-    // );
   }
 
   getOrigen(event: Event) {

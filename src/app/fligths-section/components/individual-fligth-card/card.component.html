@@ -13,6 +13,6 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button class="flat-button" color="primary">Cómpralo por {{ getPrice(flight?.price || 1, currencySelected?.value) }} {{ currencySelected?.code }}</button>
+      <button mat-flat-button class="flat-button" color="primary">Cómpralo por {{ getPrice(flight?.price || 1, currencySelected?.value) | decimalFormat }} {{ currencySelected?.code }}</button>
     </mat-card-actions>
   </mat-card>

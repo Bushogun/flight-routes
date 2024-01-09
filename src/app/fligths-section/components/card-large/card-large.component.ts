@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-card-large',
   templateUrl: './card-large.component.html',
-  styleUrls: []
+  styleUrls: ['./card-large.component.css']
 })
 export class CardLargeComponent implements OnInit {
   showDetails: boolean = false;

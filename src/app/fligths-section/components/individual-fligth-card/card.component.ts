@@ -2,10 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Flight } from '../../classes/Flight';
 import { CurrencyStatusService } from '../../services/currency-status.service';
 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: []
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
 
