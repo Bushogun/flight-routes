@@ -1,10 +1,14 @@
 import { CurrencyService } from './../../services/currency.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { FlightService } from '../../services/flights.service';
 import { Journey } from '../../classes/Journey';
 import Swal from 'sweetalert2';
+import { loadJourneys, loadedJourneys } from 'app/state/actions/journeys.actions';
+import { Store } from '@ngrx/store'
+import { selectLoading } from 'app/state/selectors/journey.selectors';
+import { startLoading, stopLoading } from 'app/state/actions/loading.actions';
 
 @Component({
   selector: 'app-page',
@@ -14,6 +18,7 @@ import Swal from 'sweetalert2';
 
 export class AppPageComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
+  loading$: Observable<boolean> = new Observable();
   tituloAlert: string = '';
   showCurrency: boolean = false;
   flightsData : Journey | undefined;
@@ -31,6 +36,7 @@ export class AppPageComponent implements OnInit, OnDestroy {
   ]);
 
   constructor(
+    private store: Store <any>,
     private readonly flightService: FlightService,
     private readonly currencyService: CurrencyService,
   ){}
@@ -38,7 +44,7 @@ export class AppPageComponent implements OnInit, OnDestroy {
   async getRoute(){
     if(!this.origenCtrl.value || !this.destinoCtrl.value )
     {return};
-
+    this.store.dispatch(startLoading());
     Swal.fire({
       title: 'Cargando',
       html: 'Buscando Rutas',
@@ -49,9 +55,20 @@ export class AppPageComponent implements OnInit, OnDestroy {
       showConfirmButton: false,
     })
 
-  this.flightsData = await this.flightService.getJourney(this.origenCtrl.value , this.destinoCtrl.value);
+    this.flightsData = await this.flightService.getJourney(this.origenCtrl.value , this.destinoCtrl.value);
+    if (this.flightsData && this.flightsData.flights && this.flightsData.origin && this.flightsData.destination && this.flightsData.price) {
+      const journeyInstance = new Journey(
+        this.flightsData.flights,
+        this.flightsData.origin,
+        this.flightsData.destination,
+        this.flightsData.price
+      );
+      this.store.dispatch(loadedJourneys({ flightsData: journeyInstance }));
+      this.store.dispatch(stopLoading());
+    }
     Swal.close();
-    console.log("Journey" + this.flightsData)
+
+    console.log("Journey", JSON.stringify(this.flightsData?.flights, null, 2));
 
     if (!this.flightsData) {
       Swal.fire('No se han encontrado rutas para este viaje', this.tituloAlert, 'error');
@@ -67,15 +84,14 @@ export class AppPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrency();
+    this.store.dispatch(loadJourneys());
   }
 
   getOrigen(event: Event) {
     event.preventDefault();
-    console.log(this.origenCtrl.value);
   }
   getDestino(event: Event) {
     event.preventDefault();
-    console.log(this.destinoCtrl.value);
   }
 
   async getCurrency(){

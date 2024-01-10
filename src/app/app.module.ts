@@ -10,6 +10,7 @@ import { FlightModule } from './fligths-section/flights-section.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ROOT_REDUCERS } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
+    StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
