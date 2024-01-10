@@ -4,6 +4,8 @@ import { AppState } from "../app.state";
 
 export const selectJourneyFeature = (state: AppState) => state.journeys;
 export const selectLoadingFeature = (state: AppState) => state.loading;
+export const selectCurrencyFeature = (state: AppState) => state.currency;
+
 
   export const selectAllJourney = createSelector(
     selectJourneyFeature,
@@ -13,4 +15,9 @@ export const selectLoadingFeature = (state: AppState) => state.loading;
   export const selectLoading = createSelector(
     selectLoadingFeature,
     (loading: boolean) => loading
+  );
+
+  export const selectCurrency = createSelector(
+    selectCurrencyFeature,
+    (currency: any) => currency
   );

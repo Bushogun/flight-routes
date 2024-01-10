@@ -1,6 +1,5 @@
 <div class="flex flex-column">
   <span class="mb-4 title-viaje" style="font-size: 40px; text-align: center;"><strong>RUTAS</strong></span>
-  <b *ngIf="( loading$ | async )">Cargando... </b>
   <mat-form-field>
     <mat-label> Origen </mat-label>
     <input maxlength="3" minlength="3" type="text" matInput placeholder="Ingrese origen" [formControl]="origenCtrl"
@@ -51,7 +50,7 @@
   </button>
 </div>
 
-<div *ngIf="showCurrency">
+<div *ngIf="showCurrency && flightsData">
   <mat-divider class="mb-5 mt-5"></mat-divider>
   <app-currency-select></app-currency-select>
   <app-card-large [journey]="flightsData"></app-card-large>
